@@ -5,29 +5,21 @@ TestSuite 60;
 ConsoleApp 98;
 WindowedApp 55;
 ## le nombre de chaines de compilation est : 
-Il y'a 5 chaines de compilations
+Il y'a 5 chaines de compilations : 
+host-clang          clang    Windows     x86_64   mingw
+host-gcc            gcc      Windows     x86_64   mingw
+clang-mingw         clang    Windows     x86_64   mingw
+mingw               gcc      Windows     x86_64   mingw
+clang-cross-linux   clang    Linux       x86_64   gnu
+
 
 ## Le projet de demarrage
-Sandbox
+Sandbox : preuve (Start project: Sandbox)
 ## Le fichier qui sert de racine au workspace
-Nkeutseu.jenga
+Nkentseu.jenga : preuve (Entry file: C:\Nkentseu\Nkentseu.jenga)
 
 ## preuve des informations fournies
 
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║                ██╗███████╗███╗   ██╗ ██████╗  █████╗             ║
-║                ██║██╔════╝████╗  ██║██╔════╝ ██╔══██╗            ║
-║                ██║█████╗  ██╔██╗ ██║██║  ███╗███████║            ║
-║           ██   ██║██╔══╝  ██║╚██╗██║██║   ██║██╔══██║            ║
-║           ╚█████╔╝███████╗██║ ╚████║╚██████╔╝██║  ██║            ║
-║            ╚════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝            ║
-║                                                                  ║
-║             Multi-platform C/C++ Build System v2.8.0             ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-
-[NKCode] ATTENTION : aucun wheel Jenga trouve (dist/*.whl) -> le paquet n'aura PAS de Jenga embarque, et les boutons Construire/Executer seront inoperants. Produisez-le avec ./cri.sh dans le depot Jenga.
 ========================== Jenga Workspace: Nkentseu ===========================
 
 Location: C:\Nkentseu
