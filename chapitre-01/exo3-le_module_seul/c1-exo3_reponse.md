@@ -20,7 +20,8 @@
 │     NKPlatform                                              │       │
 └─────────────────────────────────────────────────────────────┘
 ```
-## preuve de cette arbre
+## preuve de cette arbre est la suivante :
+## apres avoir taper la commande jenga build --target NKMath voici le resultat
 
 Configuration: Debug
 Target:        Windows x86_64

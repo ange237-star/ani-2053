@@ -1,5 +1,5 @@
 ## Resultat de la commande jenga info sur Nkentseu
-## le nombre de fichiers par type est : 
+## le nombre de projet par type est : 
 StaticLib 60;
 TestSuite 60;
 ConsoleApp 98;
