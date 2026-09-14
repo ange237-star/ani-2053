@@ -1,4 +1,5 @@
 ## Explication du fichier NKMath.jenga de NKentseu:
+```python
 from Jenga import *
 from jengaconfig import *
 
@@ -62,6 +63,7 @@ with project("NKMath"):
     with filter("(system:Linux || system:macOS || (system:Windows && !options:windows-runtime=uwp && !system:XboxSeries && !system:XboxOne)) && !system:Android && !system:iOS || system:Web"):
         with test():
             testfiles(["tests/**.cpp"])
+```
 
 ## Structure de la présentation
 
