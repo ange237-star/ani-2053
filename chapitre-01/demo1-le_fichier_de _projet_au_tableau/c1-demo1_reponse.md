@@ -63,7 +63,6 @@ with project("NKMath"):
         with test():
             testfiles(["tests/**.cpp"])
 
-
 ## Structure de la présentation
 
  Voici un fichier de projet Jenga. Ce n'est pas un fichier de configuration — c'est un programme Python. Tout ce qui est indenté sous `with project()` appartient à ce projet.
