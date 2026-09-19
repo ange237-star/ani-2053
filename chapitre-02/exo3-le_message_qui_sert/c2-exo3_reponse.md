@@ -30,6 +30,16 @@ Le meilleur commit pour moi est **3f100778**. Il répond aux trois critères : i
 
 Le commit le plus faible est **2741c661** : il liste ce qui a été fait sans jamais expliquer pourquoi, et regroupe plusieurs sous-fonctionnalités distinctes dans un seul commit.
 
+## Réécriture proposée pour 2741c661
+
+Avant :
+> NkUIDesign: les neuf menus entree par entree, raccourcis, et les huit menus contextuels
+
+Après :
+> NkUIDesign: ajoute les 9 menus principaux avec leurs raccourcis clavier, pour aligner l'IHM sur les standards des éditeurs professionnels
+
+Remarque : idéalement, les 8 menus contextuels auraient dû faire l'objet d'un commit séparé, puisqu'ils constituent un sujet distinct des menus principaux.
+
 ## Preuve
 Apres avoir taper la commande git log --oneline --graph, puis prendre certains hash pour pouvoir voir le message du commit avec la commande git log -1 hash
 **2**
