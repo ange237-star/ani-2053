@@ -30,6 +30,8 @@ int nkmain(const NkEntryState &state) {
 #include "NKWindow/NKWindow.h"
 #include "NKWindow/NKMain.h"
 
+using namespace nkentseu;
+
 int nkmain(const NkEntryState &state) {
     NkWindowConfig cfg;
     cfg.title  = "Ma fenetre";
