@@ -57,7 +57,7 @@ int nkmain(const NkEntryState &state) {
     return 0;
 }
 ```
-**Ce programme compte 27 lignes de code**
+**Ce programme compte 29 lignes de code**
 **A la difference de celui du chapitre qui compte 22 lignes de code**
 **Les lignes qui n'apparaissent pas dans le programme du chapitre:**
 ```bash

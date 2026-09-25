@@ -1,6 +1,8 @@
 #include "NKWindow/NKWindow.h"
 #include "NKWindow/NKMain.h"
- using namespace nkentseu;
+
+using namespace nkentseu;
+
 int nkmain(const NkEntryState &state) {
     NkWindowConfig cfg;
     cfg.title  = "Ma fenetre";
