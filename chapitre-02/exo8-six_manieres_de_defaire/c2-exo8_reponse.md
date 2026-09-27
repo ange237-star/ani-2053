@@ -122,7 +122,7 @@ git reset --hard HEAD@{1}
 * **Vérification :**
 ```bash
 git log --oneline -n 3
-```
+```ss
 ## Preuve
 ```bash
  PS C:\Users\Administrator\document> git status
