@@ -13,6 +13,18 @@ int nkmain(const NkEntryState& state) {
     cfg.width  = 800;
     cfg.height = 600;
 
+    //cfg.minHeight = 200;
+    //cfg.minWidth = 200;
+
+    // les 7 droits
+    cfg.resizable = false; 
+    cfg.movable = true;  
+    cfg.closable = true;  
+    cfg.minimizable = false;  
+    cfg.maximizable = true;  
+    cfg.canFullscreen = false; 
+    cfg.fullscreen = false; 
+
     NkWindow window(cfg);
 
     if (!window.IsOpen()) {

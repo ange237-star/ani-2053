@@ -1,0 +1,5 @@
+Ce que fait la barre sans ResetView : elle se met a defiler avec le monde. Au lieu de rester collee en haut de la fenetre, elle part vers la gauche a la meme vitesse que les carres, et sur sans.png on la voit decalee, voire sortie de l'ecran. Dans le journal, barre_x vaut 0 avec l'appel mais devient de plus en plus negatif sans lui, et il suit le centre de la camera.
+
+Pourquoi : une vue n'est pas un objet que l'on dessine, c'est un etat du renderer. Une fois posee avec SetView, elle s'applique a tout ce qui est dessine ensuite, interface comprise, jusqu'a ce qu'on la change. Ma barre est dessinee avec des coordonnees ecran (0, 0), mais le renderer les traite comme des coordonnees du monde et leur applique la camera.
+
+Ou placer l'appel : apres avoir dessine le monde et avant de dessiner la barre et son texte. Si je le mets avant le monde, ca ne sert a rien, et si je le mets apres la barre, elle est deja decalee.
