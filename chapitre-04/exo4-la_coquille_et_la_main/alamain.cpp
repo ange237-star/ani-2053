@@ -1,56 +1,79 @@
-#include "NKWindow/NKWindow.h"
+*#include "NKWindow/NKWindow.h"
 #include "NKWindow/NKMain.h"
-#include "NKWindow/Core/NkWindowConfig.h"
+
+#include "NKCanvas/Core/NkContextDesc.h"
+#include "NKCanvas/Core/NkGraphicsApi.h"
 #include "NKCanvas/Renderer/Targets/NkRenderWindow.h"
-#include "NKTime/NkClock.h"
+#include "NKCanvas/Renderer/Core/NkRenderer2D.h"
+#include "NKCanvas/App/NkCanvasApp.h"
+
+#include "NKMath/NKMath.h"
+#include "NKTime/NkTime.h"
 
 using namespace nkentseu;
-using namespace nkentseu::renderer;
 
 int nkmain(const NkEntryState &state) {
-    (void)state;
-
+    // 1) Décrire la fenêtre
     NkWindowConfig cfg;
-    cfg.title = "Carre (a la main)";
-    cfg.width = 800;
-    cfg.height = 450;
-    cfg.centered = true;
-    cfg.resizable = true;
+    cfg.title  = "Ma fenêtre";
+    cfg.width  = 1280;
+    cfg.height = 720;
 
+    // 2) Créer la fenêtre
     NkWindow window;
-    if (!window.Create(cfg)) return -1;          // verification 1 : la fenetre
-
-    NkContextDesc desc = NkContextDesc::MakeSoftware();
-    desc.api = NKGraphicsApi::NK_GFX_API_DX12;
-    NkRenderWindow target(window, desc);
-    if (!target.IsValid()) {                      // verification 2 : le contexte
-        window.Close();
-        return -2;
+    if (!window.Create(cfg)) {
+        return -1;   // échec de création
     }
 
-    bool running = true;
-    auto &events = NkEvents();
-    events.AddEventCallback<NkWindowCloseEvent>([&](NkWindowCloseEvent *) { running = false; });
+    //Cible
+    NkContextDesc desc;
+    desc.api = NkGraphicsApi::NK_GFX_API_DX12;
 
-    NkClock clock;
-    float32 x = 0.f;
+    renderer::NkRenderWindow rendererWindow(window, desc);
 
-    while (running && window.IsOpen()) {
-        float32 dt = clock.Tick().delta;
-        if (dt > 0.1f) dt = 0.1f;
+    if(!rendererWindow.IsValid()){
+        return 2;
+    }
 
-        while (NkEvent *ev = events.PollEvent()) {
-            (void)ev;
+    math::NkRect2f carre{20, 20, 50, 50};
+
+    // 3) Boucle principale 
+    while (window.IsOpen()) {
+        float32 dt = 100.f; // Vitesse par seconde
+
+      while (NkEvent* ev = NkEvents().PollEvent()) {
+        if (ev->Is<NkWindowCloseEvent>()) {
+            window.Close();          // l'utilisateur veut fermer
+        }
+        else if (auto* kp = ev->As<NkKeyPressEvent>()) {
+            if (kp->GetKey() == NkKey::NK_ESCAPE) window.Close();
         }
 
-        x += 100.f * dt;
-        if (x > 800.f) x = -50.f;
-
-        target.Clear(NkColor2D{18, 18, 24, 255});
-        target.GetRenderer2D().DrawFilledRect({x, 200.f, 50.f, 50.f}, NkColor2D::Red);
-        target.Display();
+        if (auto* kp = ev->As<NkKeyPressEvent>()) {
+            if (kp->GetKey() == NkKey::NK_UP){
+                carre.y -= dt;
+            }
+            if (kp->GetKey() == NkKey::NK_DOWN){
+                carre.y += dt;
+            }
+            if (kp->GetKey() == NkKey::NK_RIGHT){
+                carre.x += dt;
+            }
+            if (kp->GetKey() == NkKey::NK_LEFT){
+                carre.x -= dt;
+            }
+        }
     }
 
-    window.Close();
+    rendererWindow.Clear(renderer::NkColor2D(36, 36, 36, 255));
+    renderer::NkRenderer2D &c2d = rendererWindow.GetRenderer2D();
+
+    c2d.DrawFilledRect(carre, renderer::NkColor2D{255, 0, 0, 255});
+
+    rendererWindow.Display();
+
+    }
+
     return 0;
+
 }

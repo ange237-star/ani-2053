@@ -1,33 +1,64 @@
-// Carre rouge qui avance de 100 px/s, version avec la coquille NkCanvasApp.
+#include "NKWindow/NKWindow.h"
 #include "NKWindow/NKMain.h"
-#include "NKCanvas/Renderer/App/NkCanvasApp.h"
 
-using namespace nkentseu;
+#include "NKCanvas/Core/NkContextDesc.h"
+#include "NKCanvas/Core/NkGraphicsApi.h"
+#include "NKCanvas/Renderer/Targets/NkRenderWindow.h"
+#include "NKCanvas/Renderer/Core/NkRenderer2D.h"
+#include "NKCanvas/App/NkCanvasApp.h"
+
+#include "NKMath/NKMath.h"
+#include "NKTime/NkTime.h"
+
 using namespace nkentseu::renderer;
+using namespace nkentseu;
 
-class CarreCoquille : public NkCanvasApp {
-public:
-    CarreCoquille() {
-        Config().title = "Carre (coquille)";
-        Config().width = 800;
-        Config().height = 450;
-        Config().clearColor = NkColor2D{18, 18, 24, 255};
-    }
+class FenetreCoquille : public NkCanvasApp{
+    private :
+    nkentseu::math::NkRect2f square{20, 20, 50, 50};
+    float32 deltaTime = 100.f;
 
-protected:
-    void OnUpdate(float32 dt) override {
-        mX += 100.f * dt;
-        if (mX > 800.f) mX = -50.f;
-    }
+    public :
+        FenetreCoquille() {
+            Config().title = "Fenetre nue";
+            Config().width = 1200;
+            Config().height = 600;
+            Config().clearColor = NkColor2D{36, 36, 36, 255};
+        }
 
-    void OnRender(NkRenderWindow &target) override {
-        target.GetRenderer2D().DrawFilledRect({mX, 200.f, 50.f, 50.f}, NkColor2D::Red);
-    }
+        bool OnInit() override {
+            
+            return true;
+        }
 
-private:
-    float32 mX = 0.f;
+        void OnUpdate(float32 deltaTime) override{
+			
+		}
+
+        void OnRender(NkRenderWindow &target) override {
+			NkRenderer2D &c2d = target.GetRenderer2D();
+            c2d.DrawFilledRect(square, NkColor2D{255, 0, 0, 255});
+		}
+
+        bool OnEvent(const NkEvent &event) override {
+			if (auto* kp = event.As<NkKeyPressEvent>()) {
+            if (kp->GetKey() == NkKey::NK_UP){
+                square.y -= deltaTime;
+            }
+            if (kp->GetKey() == NkKey::NK_DOWN){
+                square.y += deltaTime;
+            }
+            if (kp->GetKey() == NkKey::NK_RIGHT){
+                square.x += deltaTime;
+            }
+            if (kp->GetKey() == NkKey::NK_LEFT){
+                square.x -= deltaTime;
+            }
+        }
+			return false;
+		}
 };
 
-int nkmain(const NkEntryState &state) {
-    return NkCanvasApp::Run<CarreCoquille>(state);
+int nkmain(const NkEntryState &state){
+    return NkCanvasApp::Run<FenetreCoquille>(state);
 }
