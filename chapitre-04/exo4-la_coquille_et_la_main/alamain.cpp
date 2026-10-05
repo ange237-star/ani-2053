@@ -1,4 +1,3 @@
-// Meme carre rouge, mais avec la fenetre, la cible et la boucle ecrites a la main.
 #include "NKWindow/NKWindow.h"
 #include "NKWindow/NKMain.h"
 #include "NKWindow/Core/NkWindowConfig.h"
@@ -22,6 +21,7 @@ int nkmain(const NkEntryState &state) {
     if (!window.Create(cfg)) return -1;          // verification 1 : la fenetre
 
     NkContextDesc desc = NkContextDesc::MakeSoftware();
+    desc.api = NKGraphicsApi::NK_GFX_API_DX12;
     NkRenderWindow target(window, desc);
     if (!target.IsValid()) {                      // verification 2 : le contexte
         window.Close();
