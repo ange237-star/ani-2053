@@ -1,0 +1,11 @@
+Sans protection : total [total], [temps médian] ms
+
+Mutex : total [total], [temps médian] ms
+
+Atomique : total [total], [temps médian] ms
+
+Local : total [total], [temps médian] ms
+
+La moins chère : [la version que tu choisirais]
+
+Pourquoi : [à écrire avec tes mesures : ce que paie le mutex, ce que paie l'atomique, pourquoi la version locale ne paie presque rien]
