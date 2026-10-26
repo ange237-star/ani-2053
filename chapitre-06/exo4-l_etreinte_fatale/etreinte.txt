@@ -1,7 +1,0 @@
-Constat : [ce que tu as vu : le programme affiche « fil a : j'ai m1 » et « fil b : j'ai m2 » puis plus rien, il ne se termine pas et ne plante pas, à confirmer avec ton lancement]
-
-Pause : [fil a : ligne ... de etreinte.cpp, il attend m2 ; fil b : ligne ... de etreinte.cpp, il attend m1 — les numéros viennent de ton débogueur]
-
-Correction : [le fil b prend maintenant m1 puis m2, comme le fil a ; les deux verrous et les deux attentes de 100 ms sont gardés]
-
-Règle : [tout le programme prend ses verrous dans le même ordre fixe, par exemple toujours m1 avant m2 ; sinon deux fils peuvent chacun tenir un verrou et attendre l'autre]

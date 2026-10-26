@@ -1,0 +1,7 @@
+Plafond 60 : avec la ligne de journal, 593 passages en 10.012 s.
+
+Sans plafond : avec imagesParSeconde à 0 et la ligne de journal, 599 passages en 10.002 s.
+
+Sans la ligne : avec le plafond de 60, 597 passages en 10.002 s ; sans plafond, 600 passages en 10.013 s.
+
+Les écarts : La boucle promet 60 images par seconde pendant 10 secondes, donc 600 passages. Avec le plafond de 60 et la ligne de journal, j'en ai 593 : sept de moins (environ 1,2 %). Sans le plafond mais avec la ligne : 599, soit un de moins. Sans la ligne et avec le plafond : 597, soit trois de moins. Sans la ligne et sans plafond : 600, aucun écart. Ce qui m'a surpris : sans plafond, la boucle ne promet aucun nombre et j'attendais bien plus de 600 passages, mais j'en ai quand même environ 600. Quelque chose d'autre impose donc la cadence. Mon hypothèse est la synchronisation avec l'écran, dont la fréquence est de [Hz de ton écran] : si elle vaut 60, cela correspond, mais je n'ai pas vérifié autrement que par ce compte. La ligne de journal fait perdre quelques passages : 593 contre 597 avec le plafond, 599 contre 600 sans plafond. Elle écrit dans le terminal à chaque passage sur le fil de rendu, donc elle retarde un peu chaque image ; l'effet est petit parce qu'une image dure environ 16,7 ms et que l'écriture ne prend qu'une petite partie de ce temps. Mesures faites en [Debug ou Release].

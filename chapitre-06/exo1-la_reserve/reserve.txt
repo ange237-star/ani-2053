@@ -1,11 +1,12 @@
 Tâche : additionner mille entiers dans une variable locale, deux cents fois (une tâche par fil ou par appel à Enqueue).
 
-Réserve : [temps 1] ms, [temps 2] ms, [temps 3] ms
+Réserve : 0.22ms, 0.34ms,  0.20ms
 
-Fils : [temps 1] ms, [temps 2] ms, [temps 3] ms
+Fils : 14.83 ms, 15.39 ms, 11.31 ms
 
-Ouvriers : [valeur affichée par GetNumWorkers]
+Ouvriers : 4
 
-Tâche longue : réserve [temps] ms, fils [temps] ms
+Tâche longue : réserve 13.63 ms, fils 20.64 ms
 
-Pourquoi : [à écrire avec tes chiffres : créer un fil coûte cher, la réserve réutilise des fils déjà prêts ; pourquoi l'écart se réduit quand la tâche est cent fois plus longue]
+Pourquoi :  créer un fil coûte cher: il faut demander un fil au systeme, lui reserver une pile et le demarrer. Avec deux cents taches courtes, cette creation pese bien plus que le travail lui-meme, et c'est ce qui donne 11 a 15 ms pour les fils contre 0.2 a 0.3 ms pour la reserve. La reserve a quatre ouvriers deja crees, qui se passent les taches sans rien recreer, donc elle me paie le prix du demarrage q'une fois. Avec la tache cent fois plus longue , le calcul devient la partie principale: les deux versions passent environ 14 a 20ms, et l'ecart se reduit, parce que le cout fixe de creation de fils compte desormais peu face au travail a faire.
+

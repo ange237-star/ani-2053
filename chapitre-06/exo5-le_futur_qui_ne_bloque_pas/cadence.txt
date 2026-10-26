@@ -1,7 +1,0 @@
-Image : [nom du fichier, taille sur disque en octets, temps de chargement en ms, tels qu'affichés par le programme]
-
-Get : trame la plus longue [valeur] ms, [nombre] trames pendant le chargement
-
-IsReady : trame la plus longue [valeur] ms, [nombre] trames pendant le chargement
-
-Ce qu'on voit : [ce que fait le carré dans chaque version : avec Get il s'arrête le temps du chargement ; avec IsReady il continue d'avancer — relie-le à tes deux mesures]
