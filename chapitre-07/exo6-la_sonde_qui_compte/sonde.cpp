@@ -1,7 +1,3 @@
-// Sonde : compter les passages de OnRender pendant dix secondes.
-// On change ces deux constantes puis on recompile, pour les quatre lancements :
-//   IMAGES_PAR_SECONDE : 60 (cadence par defaut) ou 0 (aucun plafond)
-//   AVEC_LIGNE         : true (une ligne de journal par passage) ou false (compteur seul)
 #include <cstdio>
 #include "NKWindow/NKMain.h"
 #include "NKCanvas/App/NkCanvasApp.h"
